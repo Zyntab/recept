@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ recipe.name }}</h2>
+<p>Inlagt av <a href="{{ url_for('user', username=recipe.author.username) }}"
+								title="{{ recipe.author.username }}">{{ recipe.author.username }}</a>
+	{% if recipe.original_recipe_id %}
+		, kopierat från <a href="{{ url_for('recipe', recipe_id=recipe.original_recipe_id) }}"
+											 title="Originalrecept">Originalrecept</a>{% endif %}<p>
+{% if recipe.author == current_user %}
+	<p><a href="{{ url_for('edit_recipe', recipe_id=recipe.id) }}"
+				title="Redigera receptet">Redigera receptet</a> | 
+		 <a href="{{ url_for('copy_recipe', recipe_id=recipe.id) }}"
+				title="Kopiera receptet">Kopiera receptet</a></p>
+{% endif %}
+<hr>
+<p>{{ recipe.notes }}</p>
+{% endblock %}

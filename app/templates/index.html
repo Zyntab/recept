@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% for recipe in recipes %}
+<article>
+	{% include "_recipe_short.html" %}
+</article>
+<hr>
+{% endfor %}
+<p>
+{% if prev_url %}
+	<a href="{{ prev_url }}" title="Nyare recept">Nyare recept</a>
+{% else %}
+	Nyare recept
+{% endif %}
+{% if next_url %}
+	<a href="{{ next_url }}" title="Äldre recept">Äldre recept</a>
+{% else %}
+	Äldre recept
+{% endif %}
+{% endblock %}

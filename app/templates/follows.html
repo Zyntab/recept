@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% for user in follows %}
+<table>
+	<tr>
+		<td><img src="{{ user.avatar(36) }}" title="{{ user.username }} profilbild"
+						 alt="{{ user.username }} profilbild"></td>
+		<td><a href="{{ url_for('user', username=user.username) }}" 
+					 title="{{ user.username }}">{{ user.username }}</a></td>
+	</tr>
+</table>
+<hr>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="" method="post">
+	{{ form.hidden_tag() }}
+	<table>
+		<tr>
+			<td>{{ form.name.label }}</td>
+			<td>{{ form.name(size=32) }}
+					{% for error in form.name.errors %}
+					<br><span class="error">[{{ error }}]</span>
+					{% endfor %}</td>
+		</tr>
+		<tr>
+			<td>{{ form.notes.label }}</td>
+			<td>{{ form.notes(cols=32, rows=16) }}</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>{{ form.submit() }}</td>
+		</tr>
+	</table>
+</form>
+{% endblock %}

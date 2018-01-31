@@ -1,0 +1,17 @@
+<table>
+	<tr valign="top">
+		<td><img src="{{ recipe.author.avatar(36) }}" title="Avatar" alt="Avatar"></td>
+		<td><a href="{{ url_for('user', username=recipe.author.username) }}"
+					 title="{{ recipe.author.username }}">{{ recipe.author.username }}</a> har lagt till:<br>
+				<a href="{{ url_for('recipe', recipe_id=recipe.id) }}"
+					 title="{{ recipe.name }}">{{ recipe.name }}</a>
+				{% if recipe.original_recipe_id %}
+				<br>Kopierat från <a href="{{ url_for('recipe', recipe_id=recipe.original_recipe_id) }}"
+														 title="Originalrecept">Originalrecept</a>
+				{% endif %}</td>
+	</tr>
+	<tr>
+		<td>Anteckningar</td>
+		<td>{{ recipe.notes }}</td>
+	</tr>
+</table>
